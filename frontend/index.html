@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kubernetes Multi-Tier App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #2193b0, #6dd5ed);
+            text-align: center;
+            color: white;
+            margin-top: 100px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff7e5f;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #feb47b;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 Welcome to My Kubernetes App 🚀</h1>
+    <button onclick="getMessage()">Get Message from Backend</button>
+    <div id="message"></div>
+
+    <script>
+        async function getMessage() {
+            try {
+                const response = await fetch('/api/message');
+                const data = await response.json();
+                document.getElementById('message').innerText = data.message;
+            } catch (error) {
+                document.getElementById('message').innerText = "Error connecting to backend!";
+            }
+        }
+    </script>
+</body>
+</html>
